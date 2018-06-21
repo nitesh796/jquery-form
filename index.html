@@ -19,46 +19,93 @@
           <input type="password" id="confirm_password" class="form-control" name="confirm_password" value="" placeholder="Confirm Password">
         </div>
         <div class="form-group">
-          <input type="checkbox" id="checkbox" name="checkbox" value=""> Agree to Terms & Conditions
+          Agree to Terms & Conditions <input type="checkbox" id="checkbox" name="checkbox" value="">
         </div>
-        <button type="submit" class="btn" name="button" >Submit</button>
+        <button type="submit" class="btn" name="button">Submit</button>
       </form>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-      $("#form").submit(function(e){
+      // $("#form").submit(function(e){
+      //
+      //   var email = $("#email").val();
+      //   var password = $("#password").val();
+      //   var confirm_password = $("#confirm_password").val();
+      //   if (email == "") {
+      //     alert("Please enter email.");
+      //     $("#email").focus();
+      //     e.preventDefault();
+      //
+      //   } else if (password == "") {
+      //     alert("Please enter password.");
+      //     $("#password").focus();
+      //     e.preventDefault();
+      //
+      //   } else if (password != confirm_password) {
+      //     alert("Password not matched.");
+      //     $("#password").focus();
+      //     e.preventDefault();
+      //
+      //   } else if ($("#checkbox").prop('checked') == false) {
+      //     alert("Please Agree To Terms and Conditions");
+      //     e.preventDefault();
+      //
+      //   } else {
+      //     alert("Successfully Submitted.");
+      //   }
+      //
+      //
+      //
+      // });
+      $.validator.setDefaults({
+    		submitHandler: function() {
+    			alert("Submitted sucessfully.");
+          return true;
+    		}
+    	});
 
-        var email = $("#email").val();
-        var password = $("#password").val();
-        var confirm_password = $("#confirm_password").val();
-        if (email == "") {
-          alert("Please enter email.");
-          $("#email").focus();
-          e.preventDefault();
-
-        } else if (password == "") {
-          alert("Please enter password.");
-          $("#password").focus();
-          e.preventDefault();
-
-        } else if (password != confirm_password) {
-          alert("Password not matched.");
-          $("#password").focus();
-          e.preventDefault();
-
-        } else if ($("#checkbox").prop('checked') == false) {
-          alert("Please Agree To Terms and Conditions");
-          e.preventDefault();
-
-        } else {
-          alert("Successfully Submitted.");
-        }
 
 
+      $("#form").validate({
+  			rules: {
+  				email: {
+  					required: true,
+  					email: true
+  				},
+  				password: "required",
+  				password: {
+  					required: true,
+  					minlength: 6
+  				},
+  				confirm_password: {
+  					required: true,
+  					minlength: 6,
+  					equalTo: "#password"
+  				},
+  				checkbox: "required"
+  			},
+  			messages: {
+  				password: {
+  					required: "Please provide a password",
+  					minlength: "Your password must be at least 6 characters long"
+  				},
+  				confirm_password: {
+  					required: "Please provide a password",
+  					minlength: "Your password must be at least 5 characters long",
+  					equalTo: "Please enter the same password as above"
+  				},
+  				email: "Please enter a valid email address",
+  				checkbox: "Please accept our policy",
+  			}
+  		});
 
-      });
+
+
+
+
     });
     </script>
   </body>

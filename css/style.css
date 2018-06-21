@@ -38,3 +38,10 @@ body {
   color: green;
   margin-top: 0;
 }
+
+.form label.error {
+  color: red;
+  margin-top: 10px;
+	width: auto;
+	display: block;
+}
