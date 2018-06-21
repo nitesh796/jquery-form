@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jquery Form</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <div class="form">
+      <form id="form" action="index.html" method="post">
+        <div class="form-group">
+            <input type="email" id="email" class="form-control" name="email" value="" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" class="form-control" name="password" value="" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input type="password" id="confirm_password" class="form-control" name="confirm_password" value="" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="checkbox" name="checkbox" value=""> Agree to Terms & Conditions
+        </div>
+        <button type="submit" class="btn" name="button" >Submit</button>
+      </form>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#form").submit(function(e){
+
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var confirm_password = $("#confirm_password").val();
+        if (email == "") {
+          alert("Please enter email.");
+          $("#email").focus();
+          e.preventDefault();
+
+        } else if (password == "") {
+          alert("Please enter password.");
+          $("#password").focus();
+          e.preventDefault();
+
+        } else if (password != confirm_password) {
+          alert("Password not matched.");
+          $("#password").focus();
+          e.preventDefault();
+
+        } else if ($("#checkbox").prop('checked') == false) {
+          alert("Please Agree To Terms and Conditions");
+          e.preventDefault();
+
+        } else {
+          alert("Successfully Submitted.");
+        }
+
+
+
+      });
+    });
+    </script>
+  </body>
+</html>
