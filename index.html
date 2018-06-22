@@ -29,45 +29,13 @@
     <script src="js/jquery.validate.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-      // $("#form").submit(function(e){
-      //
-      //   var email = $("#email").val();
-      //   var password = $("#password").val();
-      //   var confirm_password = $("#confirm_password").val();
-      //   if (email == "") {
-      //     alert("Please enter email.");
-      //     $("#email").focus();
-      //     e.preventDefault();
-      //
-      //   } else if (password == "") {
-      //     alert("Please enter password.");
-      //     $("#password").focus();
-      //     e.preventDefault();
-      //
-      //   } else if (password != confirm_password) {
-      //     alert("Password not matched.");
-      //     $("#password").focus();
-      //     e.preventDefault();
-      //
-      //   } else if ($("#checkbox").prop('checked') == false) {
-      //     alert("Please Agree To Terms and Conditions");
-      //     e.preventDefault();
-      //
-      //   } else {
-      //     alert("Successfully Submitted.");
-      //   }
-      //
-      //
-      //
-      // });
+
       $.validator.setDefaults({
     		submitHandler: function() {
     			alert("Submitted sucessfully.");
           return true;
     		}
     	});
-
-
 
       $("#form").validate({
   			rules: {
@@ -101,11 +69,7 @@
   				checkbox: "Please accept our policy",
   			}
   		});
-
-
-
-
-
+      
     });
     </script>
   </body>
